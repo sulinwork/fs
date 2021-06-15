@@ -10,11 +10,11 @@ public class ConfigContext {
     private static Properties properties = null;
     private static final String CONFIG_FILE_NAME = "config.properties";
 
-    public static synchronized void load(ServletContext servletContext) {
+    static {
         if (properties == null) {
             try {
                 properties = new Properties();
-                InputStream stream = servletContext.getResourceAsStream(CONFIG_FILE_NAME);
+                InputStream stream = ConfigContext.class.getClassLoader().getResourceAsStream(CONFIG_FILE_NAME);
                 properties.load(stream);
             } catch (IOException e) {
                 System.err.println("配置文件加载失败");
@@ -22,7 +22,6 @@ public class ConfigContext {
                 e.printStackTrace();
             }
         }
-
     }
 
     public static String getDirPath() {

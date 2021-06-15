@@ -1,9 +1,10 @@
 package com.isuwang.bankenterpirse.servlet;
 
 import com.alibaba.fastjson.JSON;
-import com.isuwang.bankenterpirse.Res;
+import com.isuwang.bankenterpirse.vo.Res;
 import com.isuwang.bankenterpirse.properties.ConfigContext;
 import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
@@ -23,7 +24,6 @@ public class DownFileServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ConfigContext.load(this.getServletContext());
         String dirPath = ConfigContext.getDirPath();
         if (dirPath == null || "".equals(dirPath)) {
             logger.error("服务器内部配置异常");

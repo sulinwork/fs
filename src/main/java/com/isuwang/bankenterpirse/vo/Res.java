@@ -1,4 +1,4 @@
-package com.isuwang.bankenterpirse;
+package com.isuwang.bankenterpirse.vo;
 
 public class Res<T> {
     private int code;
